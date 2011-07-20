@@ -1,0 +1,7 @@
+Usage:
+
+eg: Single headed connector
+paper.connector shape1, shape2
+
+eg: Double headed connector
+paper.connector shape1, shape2, { double_headed: true }
