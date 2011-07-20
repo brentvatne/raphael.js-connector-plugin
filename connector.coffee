@@ -31,8 +31,6 @@ class Connector
     bottom_to_right: () ->
     bottom_to_left: () ->
 
-
-
 class RightAngleConnector extends Connector
     left_to_right: () ->
         #draw line from middle-right of source to x-midpoint between source and target
@@ -86,6 +84,7 @@ class RightAngleConnector extends Connector
              @paper.arrowhead(@t2.x, @t2.y, "down")]
         else
             [@paper.path(line), @paper.arrowhead(@t2.x, @t2.y, "down")]
+
     top_to_bottom: () ->
         @swap_source_and_target()
         @bottom_to_top()
@@ -148,7 +147,7 @@ Raphael.fn.connector = (source, target, options = { double_headed: false }, conn
     else if source.is_right_of target
         connector.right_to_left()
     else
-        #this is impossible
+        #this would only occur if the source and target are 'coincident' ie on top of each other
 
 Raphael.fn.arrowhead = (x, y, direction = "right", size = 6, color = "black") ->
 
@@ -164,7 +163,6 @@ Raphael.fn.arrowhead = (x, y, direction = "right", size = 6, color = "black") ->
         when "up"    then degrees = 270
 
     arrowhead.rotate((degrees),x,y)
-
 
 #makes an element active if it has been made inactive before
 #otherwise it does nothing
